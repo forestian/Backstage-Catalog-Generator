@@ -1,0 +1,74 @@
+global:
+  owner: platform
+  lifecycle: production
+  system: payment
+  namespace: default
+
+systems:
+  - name: payment
+    title: Payment System
+    description: Services related to payment processing
+    owner: platform
+    domain: commerce
+
+services:
+  - name: payment-api
+    title: Payment API
+    description: Handles payment requests from external clients
+    type: service
+    lifecycle: production
+    owner: payment-team
+    system: payment
+    repo: https://github.com/example/payment-api
+    docs: https://docs.example.com/payment-api
+    tags:
+      - go
+      - api
+      - kubernetes
+    annotations:
+      github.com/project-slug: example/payment-api
+      backstage.io/techdocs-ref: dir:.
+    provides_apis:
+      - payment-api
+    consumes_apis:
+      - user-api
+    depends_on:
+      - resource:payment-db
+      - resource:redis-cache
+
+  - name: worker-service
+    title: Worker Service
+    description: Processes asynchronous payment jobs
+    type: service
+    lifecycle: production
+    owner: payment-team
+    system: payment
+    repo: https://github.com/example/worker-service
+    tags:
+      - go
+      - worker
+      - queue
+    depends_on:
+      - resource:redis-cache
+
+apis:
+  - name: payment-api
+    title: Payment API
+    type: openapi
+    lifecycle: production
+    owner: payment-team
+    system: payment
+    definition_path: ./openapi/payment.yaml
+
+resources:
+  - name: payment-db
+    title: Payment Database
+    type: database
+    owner: payment-team
+    system: payment
+
+  - name: redis-cache
+    title: Redis Cache
+    type: cache
+    owner: platform
+    system: payment

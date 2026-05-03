@@ -1,0 +1,32 @@
+# Claude Code local session data
+.claude/
+
+# Build output
+cataloggen
+cataloggen.exe
+
+# Test/demo artifacts
+cataloggen-demo/
+catalog/
+catalog-single/
+generated/
+
+# Environment and secrets
+.env
+*.env
+*.token
+*.secret
+kubeconfig
+*.kubeconfig
+credentials.json
+*.pem
+*.key
+
+# Go
+*.test
+*.out
+vendor/
+
+# OS
+.DS_Store
+Thumbs.db
