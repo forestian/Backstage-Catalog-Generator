@@ -24,6 +24,26 @@ Or install directly:
 go install github.com/example/backstage-catalog-generator@latest
 ```
 
+## Install from GitHub Releases
+
+Download a prebuilt binary from the [GitHub Releases page](https://github.com/forestian/Backstage-Catalog-Generator/releases).
+
+**Linux/macOS:**
+
+```sh
+tar -xzf cataloggen_<version>_<os>_<arch>.tar.gz
+chmod +x cataloggen
+./cataloggen version
+```
+
+**Windows:**
+
+Download the Windows archive, extract it, and run:
+
+```
+cataloggen.exe version
+```
+
 ## Commands
 
 ### `cataloggen version`
